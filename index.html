@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bunny Mailbox 💌🐰</title>
+  <style>
+    body {
+      background: linear-gradient(to top right, #ffe9ec, #e3f5ff);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #ff7aa2;
+      margin-bottom: 20px;
+    }
+
+    .mailbox {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .bunny-button {
+      font-size: 3rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .bunny-button:hover {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff0f5;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      font-size: 1.2em;
+      max-width: 300px;
+      z-index: 10;
+      display: none;
+    }
+
+    .popup button {
+      margin-top: 15px;
+      padding: 8px 15px;
+      background-color: #ffb6c1;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .popup button:hover {
+      background-color: #ffa7ba;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 9;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🐰 Bunny Mailbox 💌</h1>
+  <p>Click a bunny to receive your fluffy mail!</p>
+
+  <div class="mailbox">
+    <button class="bunny-button" onclick="deliverMessage()">🐰</button>
+    <button class="bunny-button" onclick="deliverMessage()">🐰</button>
+    <button class="bunny-button" onclick="deliverMessage()">🐰</button>
+    <button class="bunny-button" onclick="deliverMessage()">🐰</button>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="popup">
+    <div id="messageText"></div>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <script>
+    const messages = [
+      "You are bunny-ful just the way you are 💖",
+      "Even carrots envy your cuteness 🥕",
+      "This bun says: you’re huggable 100% certified!",
+      "Somebunny loves you a lot 🐰💌",
+      "Fluff says: drink water and go love yourself 💧💕",
+      "You're the softest sunshine in someone’s cloudy day ☁️🌞",
+      "Don’t let your sparkle fade — you’re magical ✨",
+      "One bunny hug coming through... squeeze! 🐰🤗",
+      "You're the reason this bun is smiling today 😚",
+      "Keep going, cupcake. You're doing great! 🧁🐾"
+    ];
+
+    function deliverMessage() {
+      const msg = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById("messageText").innerText = msg;
+      document.getElementById("popup").style.display = "block";
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
